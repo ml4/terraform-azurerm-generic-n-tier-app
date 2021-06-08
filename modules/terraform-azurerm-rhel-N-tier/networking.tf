@@ -17,9 +17,9 @@ resource "azurerm_virtual_network" "networking" {
 //// public subnet - defined by the security rules defined below
 //
 resource "azurerm_subnet" "public" {
+  count                = length(var.public_subnet_address_spaces)
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.networking.name
-  count                = length(var.public_subnet_address_spaces)
   name                 = "${var.public_subnet_address_spaces[count.index].name}-subnet"
   address_prefixes     = [var.public_subnet_address_spaces[count.index].address_space]
 
@@ -133,9 +133,9 @@ resource "azurerm_network_security_rule" "public-rule-https-application" {
 //// private subnet -  - defined by the security rules defined below
 //
 resource "azurerm_subnet" "private" {
+  count                = length(var.private_subnet_address_spaces)
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.networking.name
-  count                = length(var.private_subnet_address_spaces)
   name                 = "${var.private_subnet_address_spaces[count.index].name}-subnet"
   address_prefixes     = [var.private_subnet_address_spaces[count.index].address_space]
 
@@ -155,7 +155,7 @@ resource "azurerm_network_security_group" "private" {
 
 resource "azurerm_subnet_network_security_group_association" "private" {
   count                     = length(var.private_subnet_address_spaces)
-  subnet_id                 = azurerm_subnet.private.id
+  subnet_id                 = azurerm_subnet.private[count.index].id
   network_security_group_id = azurerm_network_security_group.private.id
 }
 

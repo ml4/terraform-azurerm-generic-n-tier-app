@@ -15,9 +15,14 @@ output "web_startup_script" {
   description = "startup script when instance boots"
 }
 
-output "network_subnet_id" {
-  value       = azurerm_subnet.networking[*].id
-  description = "VNet subnet ID(s)"
+output "network_public_subnet_id" {
+  value       = azurerm_subnet.public[*].id
+  description = "VNet public subnet ID(s)"
+}
+
+output "network_private_subnet_id" {
+  value       = azurerm_subnet.private[*].id
+  description = "VNet private subnet ID(s)"
 }
 
 //// linux vm related
