@@ -28,7 +28,7 @@ output "network_private_subnet_id" {
 //// linux vm related
 //
 output "linuxvm-web-public_ip_address" {
-  value       = azurerm_linux_virtual_machine.web.public_ip_address
+  value       = azurerm_linux_virtual_machine.web[count.index].public_ip_address
   description = "Azure Linux VM: Azure Linux VM Web Server public IP address"
 }
 
