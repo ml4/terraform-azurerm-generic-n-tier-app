@@ -39,7 +39,7 @@ resource "azurerm_linux_virtual_machine" "db" {
   admin_password                  = var.db_instance_config.admin_password
   disable_password_authentication = var.disable_password_authentication
   network_interface_ids = [
-    azurerm_network_interface.db.id
+    azurerm_network_interface.db[count.index].id
   ]
 
   os_disk {
