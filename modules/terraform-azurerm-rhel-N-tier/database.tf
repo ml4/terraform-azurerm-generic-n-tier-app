@@ -10,7 +10,7 @@ resource "azurerm_network_interface" "db" {
   count               = var.database ? 1 : 0
   name                = "${var.prefix}-${var.db_instance_config.vm_name}-nic-int-db"
   location            = var.location
-  resource_group_name = azurerm_resource_group.db.name
+  resource_group_name = azurerm_resource_group.db[count.index].name
 
   ip_configuration {
     name                          = "internal"
@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "db" {
 resource "azurerm_public_ip" "db" {
   count               = var.database ? 1 : 0
   name                = "${var.prefix}-${var.db_instance_config.vm_name}-nic-ext-db"
-  resource_group_name = azurerm_resource_group.db.name
+  resource_group_name = azurerm_resource_group.db[count.index].name
   location            = var.location
   allocation_method   = "Dynamic"
 }
@@ -32,7 +32,7 @@ resource "azurerm_public_ip" "db" {
 resource "azurerm_linux_virtual_machine" "db" {
   count                           = var.database ? 1 : 0
   name                            = "${var.prefix}-${var.db_instance_config.vm_name}-db"
-  resource_group_name             = azurerm_resource_group.db.name
+  resource_group_name             = azurerm_resource_group.db[count.index].name
   location                        = var.location
   size                            = var.db_instance_config.machine_size
   admin_username                  = var.db_instance_config.admin_username

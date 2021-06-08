@@ -10,7 +10,7 @@ resource "azurerm_network_interface" "web" {
   count               = var.web ? 1 : 0
   name                = "${var.prefix}-${var.web_instance_config.vm_name}-nic-int-web"
   location            = var.location
-  resource_group_name = azurerm_resource_group.web.name
+  resource_group_name = azurerm_resource_group.web[count.index].name
 
   ip_configuration {
     name                          = "internal"
@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "web" {
 resource "azurerm_public_ip" "web" {
   count               = var.web ? 1 : 0
   name                = "${var.prefix}-${var.web_instance_config.vm_name}-nic-ext-web"
-  resource_group_name = azurerm_resource_group.web.name
+  resource_group_name = azurerm_resource_group.web[count.index].name
   location            = var.location
   allocation_method   = "Dynamic"
 }
@@ -32,7 +32,7 @@ resource "azurerm_public_ip" "web" {
 resource "azurerm_linux_virtual_machine" "web" {
   count                           = var.web ? 1 : 0
   name                            = "${var.prefix}-${var.web_instance_config.vm_name}-web"
-  resource_group_name             = azurerm_resource_group.web.name
+  resource_group_name             = azurerm_resource_group.web[count.index].name
   location                        = var.location
   size                            = var.web_instance_config.machine_size
   admin_username                  = var.web_instance_config.admin_username
