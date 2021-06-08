@@ -14,7 +14,7 @@ resource "azurerm_network_interface" "app" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.public[count.index].id
+    subnet_id                     = azurerm_subnet.private[count.index].id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.app[count.index].id
   }
@@ -39,7 +39,7 @@ resource "azurerm_linux_virtual_machine" "app" {
   admin_password                  = var.app_instance_config.admin_password
   disable_password_authentication = var.disable_password_authentication
   network_interface_ids = [
-    azurerm_network_interface.app.id
+    azurerm_network_interface.app[count.index].id
   ]
 
   os_disk {
