@@ -155,7 +155,7 @@ resource "azurerm_network_security_group" "private" {
 
 resource "azurerm_subnet_network_security_group_association" "private" {
   count                     = length(var.private_subnet_address_spaces)
-  subnet_id                 = azurerm_subnet.private[count.index].id
+  subnet_id                 = azurerm_subnet.private.id
   network_security_group_id = azurerm_network_security_group.private.id
 }
 
