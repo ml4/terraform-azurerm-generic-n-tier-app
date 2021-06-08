@@ -80,10 +80,10 @@ variable "private_subnet_address_spaces" {
 
 //// linuxvm related
 //
-variable "subnet_id" {
-  type        = string
-  description = "ID of a single vnet subnet"
-}
+// variable "subnet_id" {
+//   type        = string
+//   description = "ID of a single vnet subnet"
+// }
 
 variable "web_instance_config" {
   type = object({
