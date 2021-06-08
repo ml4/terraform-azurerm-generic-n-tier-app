@@ -29,17 +29,16 @@ resource "azurerm_public_ip" "db" {
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_linux_virtual_machine" "db" {
-  count                           = var.database ? 1 : 0
-  name                            = "${var.prefix}-${var.db_instance_config.vm_name}-db"
-  resource_group_name             = azurerm_resource_group.db.name
-  location                        = var.location
-  size                            = var.db_instance_config.machine_size
-  admin_username                  = var.db_instance_config.admin_username
-  admin_password                  = var.db_instance_config.admin_password
-  disable_password_authentication = var.disable_password_authentication
+// See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
+resource "azurerm_windows_virtual_machine" "db" {
+  name                = "${var.prefix}-${var.db_instance_config.vm_name}-db"
+  resource_group_name = azurerm_resource_group.db.name
+  location            = azurerm_resource_group.db.location
+  size                = var.db_instance_config.machine_size
+  admin_username      = var.db_instance_config.admin_username
+  admin_password      = var.db_instance_config.admin_password
   network_interface_ids = [
-    azurerm_network_interface.db.id
+    azurerm_network_interface.db.id,
   ]
 
   os_disk {

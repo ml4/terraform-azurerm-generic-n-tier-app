@@ -78,7 +78,7 @@ variable "private_subnet_address_spaces" {
   }))
 }
 
-//// linuxvm related
+//// winvm related
 //
 variable "subnet_id" {
   type        = string
@@ -98,7 +98,7 @@ variable "web_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-linuxvm"
+    vm_name                      = "azure-winvm"
     os_publisher                 = "Canonical"
     os_offer                     = "UbuntuServer"
     os_sku                       = "18.04-LTS"
@@ -123,7 +123,7 @@ variable "app_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-linuxvm"
+    vm_name                      = "azure-winvm"
     os_publisher                 = "Canonical"
     os_offer                     = "UbuntuServer"
     os_sku                       = "18.04-LTS"
@@ -148,7 +148,7 @@ variable "db_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-linuxvm"
+    vm_name                      = "azure-winvm"
     os_publisher                 = "Canonical"
     os_offer                     = "UbuntuServer"
     os_sku                       = "18.04-LTS"

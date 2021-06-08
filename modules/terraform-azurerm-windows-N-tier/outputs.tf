@@ -20,19 +20,19 @@ output "network_subnet_id" {
   description = "VNet subnet ID(s)"
 }
 
-//// linux vm related
+//// win vm related
 //
-output "linuxvm-web-public_ip_address" {
-  value       = azurerm_linux_virtual_machine.web.public_ip_address
-  description = "Azure Linux VM: Azure Linux VM Web Server public IP address"
+output "winvm-web-public_ip_address" {
+  value       = azurerm_windows_virtual_machine.web.public_ip_address
+  description = "Azure Win VM: Azure Win VM Web Server public IP address"
 }
 
-// output "linuxvm-app-public_ip_address" {
-//   value       = azurerm_linux_virtual_machine.app.public_ip_address
-//   description = "Azure Linux VM: Azure Linux VM App Server public IP address"
+// output "winvm-app-public_ip_address" {
+//   value       = azurerm_windows_virtual_machine.app.public_ip_address
+//   description = "Azure Win VM: Azure Win VM App Server public IP address"
 // }
 
-// output "linuxvm-db-public_ip_address" {
-//   value       = azurerm_linux_virtual_machine.db.public_ip_address
-//   description = "Azure Linux VM: Azure Linux VM DB Server public IP address"
+// output "winvm-db-public_ip_address" {
+//   value       = azurerm_windows_virtual_machine.db.public_ip_address
+//   description = "Azure Win VM: Azure Win VM DB Server public IP address"
 // }

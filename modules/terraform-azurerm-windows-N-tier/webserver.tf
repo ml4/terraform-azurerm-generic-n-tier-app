@@ -29,17 +29,16 @@ resource "azurerm_public_ip" "web" {
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_linux_virtual_machine" "web" {
-  count                           = var.web ? 1 : 0
-  name                            = "${var.prefix}-${var.web_instance_config.vm_name}-web"
-  resource_group_name             = azurerm_resource_group.web.name
-  location                        = var.location
-  size                            = var.web_instance_config.machine_size
-  admin_username                  = var.web_instance_config.admin_username
-  admin_password                  = var.web_instance_config.admin_password
-  disable_password_authentication = var.disable_password_authentication
+// See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
+resource "azurerm_windows_virtual_machine" "web" {
+  name                = "${var.prefix}-${var.web_instance_config.vm_name}-web"
+  resource_group_name = azurerm_resource_group.web.name
+  location            = azurerm_resource_group.web.location
+  size                = var.web_instance_config.machine_size
+  admin_username      = var.web_instance_config.admin_username
+  admin_password      = var.web_instance_config.admin_password
   network_interface_ids = [
-    azurerm_network_interface.web.id
+    azurerm_network_interface.web.id,
   ]
 
   os_disk {
