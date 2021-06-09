@@ -98,14 +98,14 @@ variable "web_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-linuxvm"
-    os_publisher                 = "Canonical"
-    os_offer                     = "UbuntuServer"
-    os_sku                       = "18.04-LTS"
-    os_version                   = "latest"
-    os_disk_storage_account_type = "Standard_LRS"
+    vm_name                      = "rmg-test-web"
     machine_size                 = "Standard_D2_v4"
-    admin_username               = "ubuntu"
+    os_publisher                 = "RedHat"
+    os_offer                     = "RHEL"
+    os_sku                       = "7_9"
+    os_version                   = "7.9.2021051701"
+    os_disk_storage_account_type = "Standard_LRS"
+    admin_username               = "rhel"
     admin_password               = ""
   }
 }
@@ -123,14 +123,14 @@ variable "app_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-linuxvm"
-    os_publisher                 = "Canonical"
-    os_offer                     = "UbuntuServer"
-    os_sku                       = "18.04-LTS"
-    os_version                   = "latest"
-    os_disk_storage_account_type = "Standard_LRS"
+    vm_name                      = "rmg-test-web"
     machine_size                 = "Standard_D2_v4"
-    admin_username               = "ubuntu"
+    os_publisher                 = "RedHat"
+    os_offer                     = "RHEL"
+    os_sku                       = "7_9"
+    os_version                   = "7.9.2021051701"
+    os_disk_storage_account_type = "Standard_LRS"
+    admin_username               = "rhel"
     admin_password               = ""
   }
 }
@@ -148,14 +148,14 @@ variable "db_instance_config" {
     admin_password               = string
   })
   default = {
-    vm_name                      = "azure-linuxvm"
-    os_publisher                 = "Canonical"
-    os_offer                     = "UbuntuServer"
-    os_sku                       = "18.04-LTS"
-    os_version                   = "latest"
-    os_disk_storage_account_type = "Standard_LRS"
+    vm_name                      = "rmg-test-web"
     machine_size                 = "Standard_D2_v4"
-    admin_username               = "ubuntu"
+    os_publisher                 = "RedHat"
+    os_offer                     = "RHEL"
+    os_sku                       = "7_9"
+    os_version                   = "7.9.2021051701"
+    os_disk_storage_account_type = "Standard_LRS"
+    admin_username               = "rhel"
     admin_password               = ""
   }
 }
