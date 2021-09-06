@@ -1,1 +1,1 @@
-# terraform-google-generic-n-tier-app
+# terraform-azurerm-generic-n-tier-app
