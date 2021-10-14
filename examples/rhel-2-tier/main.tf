@@ -32,7 +32,7 @@ module "generic-n-tier-app_terraform-azurerm-rhel-N-tier" {
     }
   ]
 
-  // az vm image list --offer RHEL --all --location westeurope -o table
+  # az vm image list --offer RHEL --all --location westeurope -o table
 
   web = true
   web_instance_config = {

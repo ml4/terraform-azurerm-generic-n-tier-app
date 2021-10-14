@@ -1,5 +1,5 @@
-//// common variables
-//
+## common variables
+#
 variable "web" {
   type        = string
   description = "set to true to include web tier"
@@ -40,8 +40,8 @@ variable "common_tags" {
   default     = {}
 }
 
-//// templates
-//
+## templates
+#
 variable "web_startup_script" {
   default = ""
 }
@@ -54,8 +54,8 @@ variable "database_startup_script" {
   default = ""
 }
 
-//// networking related
-//
+## networking related
+#
 variable "vnet_address_space" {
   type        = list(string)
   description = "(Optional) list of vnet address ranges"
@@ -78,12 +78,12 @@ variable "private_subnet_address_spaces" {
   }))
 }
 
-//// linuxvm related
-//
-// variable "subnet_id" {
-//   type        = string
-//   description = "ID of a single vnet subnet"
-// }
+## linuxvm related
+#
+# variable "subnet_id" {
+#   type        = string
+#   description = "ID of a single vnet subnet"
+# }
 
 variable "web_instance_config" {
   type = object({

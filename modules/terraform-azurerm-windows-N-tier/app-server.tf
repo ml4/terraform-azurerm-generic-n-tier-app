@@ -1,4 +1,4 @@
-// Remember to also add monitor diagnostic alerts to a log analytics workspace if applicable
+# Remember to also add monitor diagnostic alerts to a log analytics workspace if applicable
 
 resource "azurerm_resource_group" "app" {
   count    = var.app ? 1 : 0
@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "app" {
   }
 }
 
-// remove this resource to have only private IP
+# remove this resource to have only private IP
 resource "azurerm_public_ip" "app" {
   count               = var.app ? 1 : 0
   name                = "${var.prefix}-${var.app_instance_config.vm_name}-nic-ext-app"
@@ -29,7 +29,7 @@ resource "azurerm_public_ip" "app" {
   allocation_method   = "Dynamic"
 }
 
-// See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
+# See notes here: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_virtual_machine
 resource "azurerm_windows_virtual_machine" "app" {
   name                = "${var.prefix}-${var.app_instance_config.vm_name}-app"
   resource_group_name = azurerm_resource_group.app.name
@@ -46,7 +46,7 @@ resource "azurerm_windows_virtual_machine" "app" {
     storage_account_type = var.app_instance_config.os_disk_storage_account_type
   }
 
-  // source_image_id can replace this if business packer base images are to be used
+  # source_image_id can replace this if business packer base images are to be used
   source_image_reference {
     publisher = var.app_instance_config.os_publisher
     offer     = var.app_instance_config.os_offer

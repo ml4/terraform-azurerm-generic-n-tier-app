@@ -1,5 +1,5 @@
-//// networking related
-//
+## networking related
+#
 output "windows_app_startup_script" {
   value       = var.app ? data.template_file.app_startup_script.rendered : ""
   description = "startup script when instance boots"
@@ -25,19 +25,19 @@ output "network_private_subnet_id" {
   description = "VNet private subnet ID(s)"
 }
 
-//// linux vm related
-//
+## linux vm related
+#
 output "linuxvm-web-public_ip_address" {
   value       = azurerm_linux_virtual_machine.web[*].public_ip_address
   description = "Azure Linux VM: Azure Linux VM Web Server public IP address"
 }
 
-// output "linuxvm-app-public_ip_address" {
-//   value       = azurerm_linux_virtual_machine.app.public_ip_address
-//   description = "Azure Linux VM: Azure Linux VM App Server public IP address"
-// }
+# output "linuxvm-app-public_ip_address" {
+#   value       = azurerm_linux_virtual_machine.app.public_ip_address
+#   description = "Azure Linux VM: Azure Linux VM App Server public IP address"
+# }
 
-// output "linuxvm-db-public_ip_address" {
-//   value       = azurerm_linux_virtual_machine.db.public_ip_address
-//   description = "Azure Linux VM: Azure Linux VM DB Server public IP address"
-// }
+# output "linuxvm-db-public_ip_address" {
+#   value       = azurerm_linux_virtual_machine.db.public_ip_address
+#   description = "Azure Linux VM: Azure Linux VM DB Server public IP address"
+# }
